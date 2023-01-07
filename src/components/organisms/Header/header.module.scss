@@ -1,0 +1,104 @@
+@use "styles/variables.module";
+@use "styles/mixins.module";
+
+.header {
+    display: flex;
+    height: variables.$navbar-height;
+    background: rgba(0, 0, 0, 0.7);
+    position: sticky;
+    top: 0;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 2rem;
+    display: block;
+    position: relative;
+
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+
+.links {
+    margin: 0 0 0 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding-left: 0;
+    flex-direction: column;
+
+    @include mixins.from-desktop {
+        flex-direction: row;
+    }
+}
+
+.link {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+
+    &.active,
+    &:hover,
+    &:focus {
+        color: variables.$primary-color;
+    }
+}
+
+.hamburger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: transparent;
+    border: none;
+
+    span {
+        width: 30px;
+        height: 4px;
+        background-color: variables.$primary-color;
+        transition: .3s ease-in-out;
+    }
+
+    &.hamburgerOpened {
+        span:nth-child(1) {
+            transform: translateY(10px) rotate(-45deg);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: translateY(-10px) rotate(45deg);
+        }
+    }
+}
+
+.drawer {
+    position: fixed;
+    height: calc(100vh - #{variables.$navbar-height});
+    background: rgba(0, 0, 0, 0.7);
+    top: variables.$navbar-height;
+    left: 40%;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+
+    &.opened {
+        transform: translateX(0);
+
+    }
+}

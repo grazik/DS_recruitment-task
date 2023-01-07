@@ -1,0 +1,20 @@
+html,
+body,
+#__next {
+    height: 100%;
+    width: 100%;
+}
+
+#__next {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}

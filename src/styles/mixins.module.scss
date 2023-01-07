@@ -1,0 +1,7 @@
+@use "styles/variables.module";
+
+@mixin from-desktop {
+  @media screen and (min-width: #{variables.$desktop}) {
+    @content
+  }
+}

@@ -1,0 +1,12 @@
+//-------- DIMENSIONS -------
+$navbar-height: 6rem;
+
+//-------- COLORS -------
+$primary-color: #f59022;
+
+//-------- BREAKPOINTS -------
+$desktop: 768px;
+
+:export {
+  desktop: $desktop;
+}
