@@ -1,4 +1,9 @@
+@use "styles/variables.module";
+
 .footer {
-  padding: 1rem;
-  background: red;
+  text-align: center;
+  background: variables.$background-color;
+  color: #fff;
+  font-size: .75rem;
+  padding: 0 1rem;
 }
