@@ -1,0 +1,18 @@
+@use "styles/variables.module";
+
+
+.linkCta {
+  border-radius: .75rem;
+  border: 2px solid variables.$primary-color;
+  padding: .5rem 1rem;
+  color: variables.$primary-color;
+  text-decoration: none;
+  transition: .2s ease-in-out;
+  display: inline-block;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: variables.$primary-color;
+  }
+}
