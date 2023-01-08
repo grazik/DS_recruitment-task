@@ -1,4 +1,5 @@
 import { ErrorMessage, Field } from "formik";
+import styles from "./formField.module.scss";
 
 type BasicProps = JSX.IntrinsicElements["input"] & {
   name: string;
@@ -20,10 +21,10 @@ const isInputProps = (props: FormFieldProps): props is InputProps =>
 export const FormField = (props: FormFieldProps) => {
   const { name, label, ...rest } = props;
   return (
-    <div>
+    <div className={styles.wrapper}>
       <label>{label ?? name}</label>
       {isInputProps(props) ? (
-        <Field name={name} type={props.type} {...rest} />
+        <Field name={name} type={props.type} {...rest} cl />
       ) : (
         <Field name={name} as={props.as} {...rest} />
       )}

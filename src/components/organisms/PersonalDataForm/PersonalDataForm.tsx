@@ -6,8 +6,20 @@ import "yup-phone-lite";
 import { DateField } from "@molecules/DateField/DateField";
 import { TextArea } from "@molecules/TextArea/TextArea";
 import { FileUploadField } from "@molecules/FileUploadField/FileUploadField";
+import { Button } from "@atoms/Button/Button";
+import { storageKeys } from "../../../constants/storageKeys";
+import { SessionStorage } from "../../../utils/sessionStorage";
 
 interface PersonalDataFormProps {}
+
+const defaultData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  birthday: "",
+  avatar: { encodedFile: "", fileSize: 0 },
+} as const;
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -32,22 +44,28 @@ const validationSchema = Yup.object({
     .test(
       "fileSize",
       "File size mustn't exceed 100kb",
-      ({ fileSize }) => fileSize < 102400
+      ({ fileSize = 0 }) => fileSize < 102400
     ),
 });
+
+const getInitialData = () => {
+  const data = SessionStorage.getRecord(storageKeys.PERSONAL_DATA);
+
+  const storedData = !!data ? JSON.parse(data) : {};
+
+  return {
+    ...defaultData,
+    ...storedData,
+  };
+};
 
 export const PersonalDataForm = ({}: PersonalDataFormProps) => {
   return (
     <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        birthday: "",
-        avatar: { encodedFile: "", fileSize: 0 },
+      initialValues={getInitialData()}
+      onSubmit={(values) => {
+        SessionStorage.saveRecord(storageKeys.PERSONAL_DATA, values);
       }}
-      onSubmit={(data) => console.log(data)}
       validationSchema={validationSchema}
       validateOnBlur={true}
       validateOnChange={false}
@@ -60,6 +78,7 @@ export const PersonalDataForm = ({}: PersonalDataFormProps) => {
         <DateField name={"birthday"} label={"Birthday"} />
         <TextArea name={"about"} label={"About"} />
         <FileUploadField name={"avatar"} label={"Avatar"} accept={"image/*"} />
+        <Button type={"submit"} title={"Submit!"} />
       </Form>
     </Formik>
   );
