@@ -1,5 +1,5 @@
 import { FormField } from "@atoms/FormField/FormField";
-import { FileUpload } from "@atoms/FileUpload";
+import { FileUpload } from "@atoms/FileUpload/FileUpload";
 
 interface FileUploadFieldProps {
   name: string;
