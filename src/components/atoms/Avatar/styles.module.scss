@@ -3,4 +3,9 @@
   height: 300px;
   position: relative;
   border: 1px solid red;
+
+  img {
+    object-fit: cover;
+    object-position: center center;
+  }
 }

@@ -24,7 +24,7 @@ export const HeroBanner = ({
       }`}
       {...(!!title ? { "aria-labelledby": "heroBanner-title" } : {})}
     >
-      <Image src={image.src} alt={image.alt} fill={true} objectFit={"cover"} />
+      <Image src={image.src} alt={image.alt} fill={true} />
       <div className={styles.contentWrapper}>
         {title && (
           <h1 className={styles.title} id={"heroBanner-title"}>

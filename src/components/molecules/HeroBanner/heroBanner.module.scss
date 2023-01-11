@@ -8,6 +8,10 @@
   display: flex;
   justify-content: center;
 
+  img {
+    object-fit: cover;
+  }
+
   @include mixins.from-desktop {
     min-height: 600px;
   }

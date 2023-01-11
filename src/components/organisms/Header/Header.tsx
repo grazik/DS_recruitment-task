@@ -35,7 +35,7 @@ export const Header = ({}: HeaderProps) => {
           className={styles.logo}
           {...("/" === route ? { "aria-current": "page" } : {})}
         >
-          <Image src={Logo} alt={"logo"} />
+          <Image src={Logo} alt={"logo"} priority />
         </Link>
         <Menu>
           <ul className={styles.links}>

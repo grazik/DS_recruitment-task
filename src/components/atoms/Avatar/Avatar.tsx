@@ -11,7 +11,6 @@ export const Avatar = ({ encodedImage }: AvatarProps) => {
     <div className={styles.avatar}>
       <Image
         fill={true}
-        objectFit={"cover"}
         src={encodedImage || AvatarPlaceholder}
         alt={"Avatar"}
       />
