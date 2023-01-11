@@ -17,6 +17,7 @@
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "formik": "^2.2.9",
+    "jest": "^29.3.1",
     "next": "13.1.1",
     "normalize.css": "^8.0.1",
     "prettier": "^2.8.1",
@@ -28,6 +29,7 @@
     "yup-phone-lite": "^1.1.2"
   },
   "devDependencies": {
-    "@types/body-scroll-lock": "^3.1.0"
+    "@types/body-scroll-lock": "^3.1.0",
+    "@types/jest": "^29.2.5"
   }
 }
