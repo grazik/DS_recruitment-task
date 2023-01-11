@@ -24,7 +24,7 @@ export const FormField = (props: FormFieldProps) => {
     <div className={styles.wrapper}>
       <label>{label ?? name}</label>
       {isInputProps(props) ? (
-        <Field name={name} type={props.type} {...rest} cl />
+        <Field name={name} type={props.type} {...rest} />
       ) : (
         <Field name={name} as={props.as} {...rest} />
       )}

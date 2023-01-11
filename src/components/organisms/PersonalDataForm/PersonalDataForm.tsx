@@ -7,8 +7,8 @@ import { DateField } from "@molecules/DateField/DateField";
 import { TextArea } from "@molecules/TextArea/TextArea";
 import { FileUploadField } from "@molecules/FileUploadField/FileUploadField";
 import { Button } from "@atoms/Button/Button";
-import { storageKeys } from "../../../constants/storageKeys";
-import { SessionStorage } from "../../../utils/sessionStorage";
+import { storageKeys } from "@constants/storageKeys";
+import { SessionStorage } from "@utils/sessionStorage";
 
 interface PersonalDataFormProps {}
 

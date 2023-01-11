@@ -21,8 +21,10 @@
       "@templates/*": ["src/components/templates/*"],
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
       "@pages/*": ["pages/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@constants/*": ["src/constants/*"],
       "@public/*": ["public/*"],
     },
     "incremental": true
