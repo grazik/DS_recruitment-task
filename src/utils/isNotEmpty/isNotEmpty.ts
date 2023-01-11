@@ -1,4 +1,4 @@
-export const isNotEmpty = (elem: any): boolean => {
+export const isNotEmpty = <T>(elem: any): boolean => {
   if (elem == null) {
     return false;
   }

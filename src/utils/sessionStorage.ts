@@ -7,10 +7,16 @@ export const SessionStorage = {
     sessionStorage.setItem(key, JSON.stringify(value));
   },
 
-  getRecord(key: string) {
-    if (typeof window !== "undefined") {
-      return window.sessionStorage.getItem(key);
+  getRecord<T extends any>(key: string) {
+    if (typeof window === "undefined") {
+      return null;
     }
-    return "";
+    const item = window.sessionStorage.getItem(key);
+
+    if (!!item) {
+      return JSON.parse(item) as T;
+    }
+
+    return null;
   },
 };

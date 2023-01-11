@@ -9,6 +9,7 @@ import { FileUploadField } from "@molecules/FileUploadField/FileUploadField";
 import { Button } from "@atoms/Button/Button";
 import { storageKeys } from "@constants/storageKeys";
 import { SessionStorage } from "@utils/sessionStorage";
+import { PersonalData } from "@typing/PersonalData";
 
 interface PersonalDataFormProps {}
 
@@ -33,6 +34,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
   phone: Yup.string().phone("PL", "Please enter a valid phone number"),
   birthday: Yup.date()
+    .min(new Date("1900-01-01T00:00:00"), "You can't be born before 1900")
     .max(new Date(), "You can't be born in the future")
     .required("Required!"),
   about: Yup.string(),
@@ -49,9 +51,8 @@ const validationSchema = Yup.object({
 });
 
 const getInitialData = () => {
-  const data = SessionStorage.getRecord(storageKeys.PERSONAL_DATA);
-
-  const storedData = !!data ? JSON.parse(data) : {};
+  const storedData =
+    SessionStorage.getRecord<PersonalData>(storageKeys.PERSONAL_DATA) ?? {};
 
   return {
     ...defaultData,

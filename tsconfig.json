@@ -21,6 +21,7 @@
       "@templates/*": ["src/components/templates/*"],
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
+      "@typing/*": ["src/typing/*"],
       "@utils/*": ["src/utils/*"],
       "@pages/*": ["pages/*"],
       "@hooks/*": ["src/hooks/*"],
