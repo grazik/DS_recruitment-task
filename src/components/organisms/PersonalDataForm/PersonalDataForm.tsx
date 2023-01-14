@@ -15,6 +15,7 @@ import { SessionStorage } from "@utils/sessionStorage";
 import { PersonalData } from "@typing/PersonalData";
 import { BasicFieldProps } from "@atoms/FormField/FormField";
 import styles from "./personalDataForm.module.scss";
+import { useRouter } from "next/router";
 
 interface PersonalDataFormProps {}
 
@@ -93,11 +94,14 @@ const fields: {
 ];
 
 export const PersonalDataForm = ({}: PersonalDataFormProps) => {
+  const router = useRouter();
+
   return (
     <Formik
       initialValues={getInitialData()}
       onSubmit={(values) => {
         SessionStorage.saveRecord(storageKeys.PERSONAL_DATA, values);
+        router.push("/profile");
       }}
       validationSchema={validationSchema}
       validateOnBlur={true}
