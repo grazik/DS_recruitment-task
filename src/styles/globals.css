@@ -23,3 +23,7 @@ main {
 .bold {
     font-weight: 800;
 }
+
+.title {
+    font-size: 2.5rem;
+}

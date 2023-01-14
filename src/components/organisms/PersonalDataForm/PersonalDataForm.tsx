@@ -5,11 +5,16 @@ import * as Yup from "yup";
 import "yup-phone-lite";
 import { DateField } from "@molecules/DateField/DateField";
 import { TextArea } from "@molecules/TextArea/TextArea";
-import { FileUploadField } from "@molecules/FileUploadField/FileUploadField";
+import {
+  FileUploadField,
+  FileUploadFieldProps,
+} from "@molecules/FileUploadField/FileUploadField";
 import { Button } from "@atoms/Button/Button";
 import { storageKeys } from "@constants/storageKeys";
 import { SessionStorage } from "@utils/sessionStorage";
 import { PersonalData } from "@typing/PersonalData";
+import { BasicFieldProps } from "@atoms/FormField/FormField";
+import styles from "./personalDataForm.module.scss";
 
 interface PersonalDataFormProps {}
 
@@ -19,6 +24,7 @@ const defaultData = {
   email: "",
   phone: "",
   birthday: "",
+  about: "",
   avatar: { encodedFile: "", fileSize: 0 },
 } as const;
 
@@ -50,6 +56,12 @@ const validationSchema = Yup.object({
     ),
 });
 
+const isFieldRequired = (
+  fieldName: keyof Yup.InferType<typeof validationSchema>
+) => {
+  return validationSchema.fields[fieldName].spec.presence === "required";
+};
+
 const getInitialData = () => {
   const storedData =
     SessionStorage.getRecord<PersonalData>(storageKeys.PERSONAL_DATA) ?? {};
@@ -59,6 +71,26 @@ const getInitialData = () => {
     ...storedData,
   };
 };
+
+const fields: {
+  name: keyof typeof defaultData;
+  label: string;
+  Component: (props: BasicFieldProps | FileUploadFieldProps) => JSX.Element;
+  props?: Record<string, any>;
+}[] = [
+  { name: "firstName", label: "First Name", Component: TextField },
+  { name: "lastName", label: "Last Name", Component: TextField },
+  { name: "email", label: "Email", Component: EmailField },
+  { name: "phone", label: "Phone", Component: TextField },
+  { name: "birthday", label: "Birthday", Component: DateField },
+  { name: "about", label: "About", Component: TextArea },
+  {
+    name: "avatar",
+    label: "Avatar",
+    Component: FileUploadField,
+    props: { accept: "image/*" },
+  },
+];
 
 export const PersonalDataForm = ({}: PersonalDataFormProps) => {
   return (
@@ -71,14 +103,16 @@ export const PersonalDataForm = ({}: PersonalDataFormProps) => {
       validateOnBlur={true}
       validateOnChange={false}
     >
-      <Form>
-        <TextField name={"firstName"} label={"First Name"} />
-        <TextField name={"lastName"} label={"Last Name"} />
-        <EmailField name={"email"} label={"Email"} />
-        <TextField name={"phone"} label={"Phone"} />
-        <DateField name={"birthday"} label={"Birthday"} />
-        <TextArea name={"about"} label={"About"} />
-        <FileUploadField name={"avatar"} label={"Avatar"} accept={"image/*"} />
+      <Form className={styles.form}>
+        {fields.map(({ name, label, Component, props = {} }) => (
+          <Component
+            {...props}
+            key={name}
+            name={name}
+            label={label}
+            isRequired={isFieldRequired(name)}
+          />
+        ))}
         <Button type={"submit"} title={"Submit!"} />
       </Form>
     </Formik>

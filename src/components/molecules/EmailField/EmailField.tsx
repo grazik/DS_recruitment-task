@@ -1,10 +1,5 @@
-import { FormField } from "@atoms/FormField/FormField";
+import { BasicFieldProps, FormField } from "@atoms/FormField/FormField";
 
-interface TextFieldProps {
-  name: string;
-  label?: string;
-}
-
-export const EmailField = ({ name, label }: TextFieldProps) => {
-  return <FormField name={name} type={"email"} label={label} />;
+export const EmailField = ({ name, label, ...props }: BasicFieldProps) => {
+  return <FormField {...props} name={name} type={"email"} label={label} />;
 };

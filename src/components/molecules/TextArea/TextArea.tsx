@@ -1,10 +1,14 @@
-import { FormField } from "@atoms/FormField/FormField";
+import { BasicFieldProps, FormField } from "@atoms/FormField/FormField";
+import styles from "./textArea.module.scss";
 
-interface TextAreaProps {
-  name: string;
-  label?: string;
-}
-
-export const TextArea = ({ name, label }: TextAreaProps) => {
-  return <FormField name={name} as={"textarea"} />;
+export const TextArea = ({ name, label, ...props }: BasicFieldProps) => {
+  return (
+    <FormField
+      {...props}
+      name={name}
+      label={label}
+      as={"textarea"}
+      className={styles.textArea}
+    />
+  );
 };

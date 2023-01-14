@@ -1,11 +1,28 @@
 .wrapper {
  display: flex;
  flex-direction: column;
+ gap: .5rem;
+ width: 100%;
+}
+
+.label {
+ font-size: 1.25rem;
+
+ &.required {
+  &::after {
+   content: '*';
+   color: red;
+  }
+ }
 }
 
 .input {
- width: 350px;
+ padding: 0.5rem 1rem;
+ display: block;
  flex-shrink: 1;
+ font-size: 1.25rem;
 }
 
-
+.error {
+ color: red;
+}

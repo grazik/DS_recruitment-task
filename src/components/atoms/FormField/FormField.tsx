@@ -1,15 +1,18 @@
 import { ErrorMessage, Field } from "formik";
 import styles from "./formField.module.scss";
+import classNames from "classnames";
 
-type BasicProps = JSX.IntrinsicElements["input"] & {
+export type BasicFieldProps = JSX.IntrinsicElements["input"] & {
   name: string;
+  isRequired?: boolean;
   label?: string;
 };
-interface InputProps extends BasicProps {
+
+interface InputProps extends BasicFieldProps {
   type: JSX.IntrinsicElements["input"]["type"];
 }
 
-interface CustomComponentProps extends BasicProps {
+interface CustomComponentProps extends BasicFieldProps {
   as: Parameters<typeof Field>[0]["as"];
 }
 
@@ -19,16 +22,31 @@ const isInputProps = (props: FormFieldProps): props is InputProps =>
   "type" in props;
 
 export const FormField = (props: FormFieldProps) => {
-  const { name, label, ...rest } = props;
+  const { name, label, isRequired = false, className, ...rest } = props;
+
   return (
     <div className={styles.wrapper}>
-      <label>{label ?? name}</label>
+      <label
+        className={classNames(styles.label, { [styles.required]: isRequired })}
+      >
+        {label ?? name}
+      </label>
       {isInputProps(props) ? (
-        <Field name={name} type={props.type} {...rest} />
+        <Field
+          name={name}
+          className={classNames(styles.input, className)}
+          type={props.type}
+          {...rest}
+        />
       ) : (
-        <Field name={name} as={props.as} {...rest} />
+        <Field
+          {...rest}
+          className={classNames(styles.input, className)}
+          name={name}
+          as={props.as}
+        />
       )}
-      <ErrorMessage name={name} />
+      <ErrorMessage name={name} className={styles.error} component={"span"} />
     </div>
   );
 };

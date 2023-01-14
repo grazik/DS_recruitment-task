@@ -1,10 +1,5 @@
-import { FormField } from "@atoms/FormField/FormField";
+import { BasicFieldProps, FormField } from "@atoms/FormField/FormField";
 
-interface DateFieldProps {
-  name: string;
-  label?: string;
-}
-
-export const DateField = ({ name, label }: DateFieldProps) => {
-  return <FormField name={name} type={"date"} label={label} />;
+export const DateField = ({ name, label, ...props }: BasicFieldProps) => {
+  return <FormField {...props} name={name} type={"date"} label={label} />;
 };
