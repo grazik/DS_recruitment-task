@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import AvatarPlaceholder from "@public/avatar.png";
 import Image from "next/image";
+import NoSsrWrapper from "@atoms/NoSsrWrapper/NoSsrWrapper";
 
 interface AvatarProps {
   encodedImage?: string;
@@ -8,12 +9,14 @@ interface AvatarProps {
 
 export const Avatar = ({ encodedImage }: AvatarProps) => {
   return (
-    <div className={styles.avatar}>
-      <Image
-        fill={true}
-        src={encodedImage || AvatarPlaceholder}
-        alt={"Avatar"}
-      />
-    </div>
+    <NoSsrWrapper>
+      <div className={styles.avatar}>
+        <Image
+          fill={true}
+          src={encodedImage || AvatarPlaceholder}
+          alt={"Avatar"}
+        />
+      </div>
+    </NoSsrWrapper>
   );
 };
