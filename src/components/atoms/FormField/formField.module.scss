@@ -8,11 +8,8 @@
 .label {
  font-size: 1.25rem;
 
- &.required {
-  &::after {
-   content: '*';
+ .required {
    color: red;
-  }
  }
 }
 
