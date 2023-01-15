@@ -27,7 +27,9 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
     <>
       <Hamburger isOpened={isOpened} setIsOpened={setIsOpened} />
       <div
-        className={`${styles.drawer} ${isOpened ? styles.opened : ""}`}
+        className={`${styles.drawer} ${
+          isOpened ? styles.opened : styles.closed
+        }`}
         ref={drawerRef}
         id={"menuDrawer"}
       >

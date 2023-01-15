@@ -97,19 +97,33 @@
     left: 40%;
     right: 0;
     transform: translateX(100%);
-    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+    transition-delay: 0s, .3s;
 
     &.opened {
         transform: translateX(0);
     }
 
-    .links {
-        visibility: hidden;
+    &.closed {
+        .links {
+            animation: fadeOut;
+            animation-duration: .3s;
+            animation-fill-mode: forwards;
+        }
     }
 
     &.opened {
         .links {
             visibility: visible;
         }
+    }
+}
+
+@keyframes fadeOut {
+    99% {
+        visibility: visible;
+    }
+    100% {
+        visibility: hidden;
     }
 }
