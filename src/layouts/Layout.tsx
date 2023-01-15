@@ -6,9 +6,10 @@ import Head from "next/head";
 interface LayoutProps {
   children: ReactElement;
   title?: string;
+  extraStyles?: string;
 }
 
-export const Layout = ({ children, title }: LayoutProps) => {
+export const Layout = ({ children, title, extraStyles = "" }: LayoutProps) => {
   return (
     <>
       <Head>
@@ -16,6 +17,7 @@ export const Layout = ({ children, title }: LayoutProps) => {
           {`DS recruitment task ${title ? `| ${title}` : ""}`.trim()}
         </title>
       </Head>
+      <style>{extraStyles}</style>
       <Header />
       <main>{children}</main>
       <Footer />
