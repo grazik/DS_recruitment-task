@@ -13,6 +13,9 @@ export const Hamburger = ({ isOpened, setIsOpened }: HamburgerProps) => {
         isOpened ? styles.hamburgerOpened : ""
       }`}
       onClick={() => setIsOpened((prev) => !prev)}
+      aria-haspopup={"menu"}
+      aria-controls="menuDrawer"
+      {...(isOpened ? { "aria-expanded": "true" } : {})}
     >
       <span />
       <span />

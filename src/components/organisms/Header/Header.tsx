@@ -38,7 +38,7 @@ export const Header = ({}: HeaderProps) => {
           <Image src={Logo} alt={"logo"} priority />
         </Link>
         <Menu>
-          <ul className={styles.links}>
+          <ul className={styles.links} id={"menu"} role={"menu"}>
             {links.map(({ href, label }) => (
               <li key={label}>
                 <Link

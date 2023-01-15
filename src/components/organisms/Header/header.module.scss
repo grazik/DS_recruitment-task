@@ -101,6 +101,15 @@
 
     &.opened {
         transform: translateX(0);
+    }
 
+    .links {
+        visibility: hidden;
+    }
+
+    &.opened {
+        .links {
+            visibility: visible;
+        }
     }
 }

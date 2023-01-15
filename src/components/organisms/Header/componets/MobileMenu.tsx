@@ -29,6 +29,7 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
       <div
         className={`${styles.drawer} ${isOpened ? styles.opened : ""}`}
         ref={drawerRef}
+        id={"menuDrawer"}
       >
         {children}
       </div>
