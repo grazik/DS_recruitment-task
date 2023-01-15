@@ -1,0 +1,19 @@
+.informationEntry {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.label,
+.value {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.value {
+  white-space: pre-wrap;
+}

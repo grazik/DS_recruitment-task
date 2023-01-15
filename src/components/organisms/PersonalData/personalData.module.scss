@@ -1,0 +1,24 @@
+@use "styles/mixins.module";
+
+.personalData {
+ display: flex;
+ flex-direction: column;
+ gap: 1.5rem;
+
+ @include mixins.from-desktop {
+  flex-direction: row-reverse;
+ }
+
+ > div {
+  flex-basis: 50%;
+  flex-grow: 0;
+ }
+
+ margin-bottom: 2rem;
+}
+
+.informationEntries {
+ display: flex;
+ flex-direction: column;
+ gap: 1.5rem
+}

@@ -6,6 +6,7 @@ import { InformationEntry } from "@atoms/InformationEntry/InformationEntry";
 import { format } from "date-fns";
 import { parseDateString } from "@utils/parseDateString";
 import { Avatar } from "@atoms/Avatar/Avatar";
+import styles from "./personalData.module.scss";
 
 const informationOrder: [
   label: string,
@@ -19,7 +20,7 @@ const informationOrder: [
   [
     "Birthday",
     "birthday",
-    (v = "") => format(parseDateString(v), "dd MM yyyy"),
+    (v = "") => format(parseDateString(v), "dd.MM.yyyy"),
   ],
   ["About", "about"],
 ];
@@ -34,17 +35,21 @@ export const PersonalData = () => {
   }
 
   return (
-    <div>
-      <Avatar encodedImage={storedData.avatar?.encodedFile} />
-      {informationOrder.map(
-        ([label, key, transformationFunction = (e) => e]) => (
-          <InformationEntry
-            key={label}
-            label={label}
-            value={transformationFunction(storedData[key])}
-          />
-        )
-      )}
+    <div className={styles.personalData}>
+      <div>
+        <Avatar encodedImage={storedData.avatar?.encodedFile} />
+      </div>
+      <div className={styles.informationEntries}>
+        {informationOrder.map(
+          ([label, key, transformationFunction = (e) => e]) => (
+            <InformationEntry
+              key={label}
+              label={label}
+              value={transformationFunction(storedData[key])}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };

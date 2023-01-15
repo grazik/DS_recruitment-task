@@ -1,16 +1,15 @@
+import styles from "./InformationEntry.module.scss";
+
 interface InformationEntryProps {
   label: string;
   value?: string;
 }
 
-export const InformationEntry = ({
-  label,
-  value = "N/A",
-}: InformationEntryProps) => {
+export const InformationEntry = ({ label, value }: InformationEntryProps) => {
   return (
-    <div>
-      <p>{label}:</p>
-      <p>{value}</p>
+    <div className={styles.informationEntry}>
+      <p className={styles.label}>{label}:</p>
+      <p className={styles.value}>{value || "N/A"}</p>
     </div>
   );
 };
