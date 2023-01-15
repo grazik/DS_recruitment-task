@@ -2,10 +2,11 @@ import { HeroBanner } from "@molecules/HeroBanner/HeroBanner";
 import { LinkCta } from "@atoms/LinkCta/LinkCta";
 import HeroImg from "@public/hero.jpg";
 import styles from "@styles/homePage.module.scss";
+import { Layout } from "@layouts/Layout";
 
 export default function Home() {
   return (
-    <>
+    <Layout>
       <HeroBanner
         image={{
           src: HeroImg,
@@ -20,6 +21,6 @@ export default function Home() {
           <LinkCta href={"/profile"} title={"Check your profile"} />
         </div>
       </HeroBanner>
-    </>
+    </Layout>
   );
 }
