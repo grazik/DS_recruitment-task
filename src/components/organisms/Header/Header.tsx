@@ -27,7 +27,7 @@ export const Header = ({}: HeaderProps) => {
 
   const Menu = isMobile ? MobileMenu : DesktopMenu;
   return (
-    <header className={styles.header}>
+    <header className={styles.header} style={{ "--header-opacity": 0.25 }}>
       <nav className={`wrapper ${styles.navbar}`}>
         <Link
           href={"/"}

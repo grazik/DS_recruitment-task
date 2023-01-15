@@ -4,7 +4,7 @@
 .header {
     display: flex;
     height: variables.$navbar-height;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, var(--header-opacity));
     position: sticky;
     flex-shrink: 0;
     top: 0;
@@ -92,7 +92,7 @@
 .drawer {
     position: fixed;
     height: calc(100vh - #{variables.$navbar-height});
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, var(--header-opacity));
     top: variables.$navbar-height;
     left: 40%;
     right: 0;
